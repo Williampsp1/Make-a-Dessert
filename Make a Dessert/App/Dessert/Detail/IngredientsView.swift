@@ -18,7 +18,9 @@ struct IngredientsView: View {
             VStack(spacing: 3) {
                 ForEach(ingredients, id: \.self) { ingredient in
                     HStack {
-                        if ingredient.measurement.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil {
+                        if ingredient.measurement.rangeOfCharacter(from: CharacterSet.decimalDigits) != nil || ingredient.measurement.unicodeScalars.contains(where: {
+                            UnicodeScalar("\u{00BC}")..."\u{00BE}" ~= $0
+                        }) {
                             Text("\(ingredient.name.capitalized):")
                             Text(ingredient.measurement)
                         } else {
