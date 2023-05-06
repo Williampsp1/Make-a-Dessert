@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "7CF95227-FA0F-4166-A073-F271E5434065",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Make a Dessert.xcodeproj",
+      "identifier" : "535522942A00699A00219334",
+      "name" : "Make a Dessert"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Make a Dessert.xcodeproj",
+        "identifier" : "535522A52A00699C00219334",
+        "name" : "Make a DessertTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Make a Dessert.xcodeproj",
+        "identifier" : "535522AF2A00699C00219334",
+        "name" : "Make a DessertUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
