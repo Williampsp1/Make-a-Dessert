@@ -34,8 +34,6 @@
 		5355229D2A00699C00219334 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5355229C2A00699C00219334 /* Assets.xcassets */; };
 		535522A12A00699C00219334 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 535522A02A00699C00219334 /* Preview Assets.xcassets */; };
 		535522AB2A00699C00219334 /* DessertListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535522AA2A00699C00219334 /* DessertListViewModelTests.swift */; };
-		535522B52A00699C00219334 /* Make_a_DessertUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535522B42A00699C00219334 /* Make_a_DessertUITests.swift */; };
-		535522B72A00699C00219334 /* Make_a_DessertUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535522B62A00699C00219334 /* Make_a_DessertUITestsLaunchTests.swift */; };
 		535522C52A006A4300219334 /* DessertProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535522C42A006A4300219334 /* DessertProvider.swift */; };
 		535522C82A006B0700219334 /* DessertMeals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535522C72A006B0700219334 /* DessertMeals.swift */; };
 		535522CA2A006B3100219334 /* DessertDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535522C92A006B3100219334 /* DessertDetail.swift */; };
@@ -88,8 +86,6 @@
 		535522A62A00699C00219334 /* Make a DessertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Make a DessertTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		535522AA2A00699C00219334 /* DessertListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertListViewModelTests.swift; sourceTree = "<group>"; };
 		535522B02A00699C00219334 /* Make a DessertUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Make a DessertUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		535522B42A00699C00219334 /* Make_a_DessertUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Make_a_DessertUITests.swift; sourceTree = "<group>"; };
-		535522B62A00699C00219334 /* Make_a_DessertUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Make_a_DessertUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		535522C42A006A4300219334 /* DessertProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertProvider.swift; sourceTree = "<group>"; };
 		535522C72A006B0700219334 /* DessertMeals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertMeals.swift; sourceTree = "<group>"; };
 		535522C92A006B3100219334 /* DessertDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertDetail.swift; sourceTree = "<group>"; };
@@ -215,7 +211,6 @@
 				539617F72A030310009411FF /* Make a Dessert.xctestplan */,
 				535522972A00699A00219334 /* Make a Dessert */,
 				535522A92A00699C00219334 /* Make a DessertTests */,
-				535522B32A00699C00219334 /* Make a DessertUITests */,
 				535522962A00699A00219334 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -256,15 +251,6 @@
 				530B6D1C2A049F1D0089E1DC /* AdapterTests */,
 			);
 			path = "Make a DessertTests";
-			sourceTree = "<group>";
-		};
-		535522B32A00699C00219334 /* Make a DessertUITests */ = {
-			isa = PBXGroup;
-			children = (
-				535522B42A00699C00219334 /* Make_a_DessertUITests.swift */,
-				535522B62A00699C00219334 /* Make_a_DessertUITestsLaunchTests.swift */,
-			);
-			path = "Make a DessertUITests";
 			sourceTree = "<group>";
 		};
 		535522C32A0069CF00219334 /* Network */ = {
@@ -504,8 +490,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				535522B52A00699C00219334 /* Make_a_DessertUITests.swift in Sources */,
-				535522B72A00699C00219334 /* Make_a_DessertUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
