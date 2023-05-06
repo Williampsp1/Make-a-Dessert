@@ -12,6 +12,7 @@ struct HomeView: View {
         NavigationView {
             DessertListView()
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
