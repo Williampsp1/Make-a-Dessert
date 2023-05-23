@@ -10,6 +10,8 @@ import Foundation
 class DessertListViewModel: ObservableObject {
     @Published var dessertListMeals: [DessertListMealInfo] = []
     @Published var errorOccured: Bool = false
+    @Published var favoriteIds = (UserDefaults.standard.array(forKey: "favorites") as? [String] ?? [])
+    @Published var favoriteMeals: [DessertListMealInfo] = []
     var errorMessage = ""
     private let dessertProvider: DessertProviding
     
@@ -30,5 +32,18 @@ class DessertListViewModel: ObservableObject {
             }
         }
         return task
+    }
+    
+    func addOrRemove(_ mealId: String) {
+        if favoriteIds.contains(mealId) {
+            favoriteIds.removeAll { $0 == mealId }
+        } else {
+            favoriteIds.append(mealId)
+        }
+        UserDefaults.standard.set(self.favoriteIds, forKey: "favorites")
+    }
+    
+    func fetchFavorites() {
+        favoriteMeals = dessertListMeals.filter { meal in favoriteIds.contains { meal.id == $0 }}
     }
 }

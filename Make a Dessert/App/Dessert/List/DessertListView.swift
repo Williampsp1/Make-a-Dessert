@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DessertListView: View {
-    @StateObject private var viewModel = DessertListViewModel(dessertProvider: DessertProvider())
+    @EnvironmentObject private var viewModel: DessertListViewModel
     
     var body: some View {
         Group {
@@ -23,18 +23,11 @@ struct DessertListView: View {
                     .buttonStyle(.borderedProminent)
                 }
             } else if !viewModel.dessertListMeals.isEmpty {
-                List {
-                    ForEach(viewModel.dessertListMeals) { meal in
-                        NavigationLink(destination: DessertDetailView(id: meal.id)) {
-                            DessertListItemView(dessert: meal)
-                        }
-                    }
-                }
+                DessertListingView(meals: viewModel.dessertListMeals)
             } else {
                 ProgressView()
             }
         }
-        .navigationTitle("Make a Dessert!")
         .onAppear {
             viewModel.getDessertMeals()
         }
@@ -46,5 +39,6 @@ struct DessertListView_Previews: PreviewProvider {
         NavigationView {
             DessertListView()
         }
+        .environmentObject(DessertListViewModel(dessertProvider: DessertProvider()))
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct Make_a_DessertApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            RootView()
         }
     }
 }

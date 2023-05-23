@@ -27,7 +27,7 @@ struct DessertListItemView: View {
 
 struct DessertListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        DessertListItemView(dessert: DessertListMealInfo(strMeal: "Ice Cream", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", id: "242"))
+        DessertListItemView(dessert: DessertListMealInfo(strMeal: "Ice Cream", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", id: "52891"))
             .padding()
     }
 }

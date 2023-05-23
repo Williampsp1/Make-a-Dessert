@@ -7,17 +7,14 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct RootView: View {
     var body: some View {
-        NavigationView {
-            DessertListView()
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+        DessertHomeView()
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        RootView()
     }
 }
