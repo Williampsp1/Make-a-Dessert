@@ -10,10 +10,17 @@ import Foundation
 class DessertDetailViewModel: ObservableObject {
     @Published var detailInfo: DessertDetailInformation?
     @Published var errorOccured: Bool = false
+    @Published var loadingState: LoadingState = .loading
     var errorMessage = ""
     private let dessertProvider: DessertProviding
     
-    init(dessertProvider: DessertProviding) {
+    enum LoadingState {
+        case error
+        case loading
+        case loaded
+    }
+    
+    init(dessertProvider: DessertProviding = DessertProvider()) {
         self.dessertProvider = dessertProvider
     }
     
@@ -22,9 +29,9 @@ class DessertDetailViewModel: ObservableObject {
         let task = Task {
             do {
                 detailInfo = try await dessertProvider.getDessertDetail(id: id)
-                errorOccured = false
+                loadingState = .loaded
             } catch let error {
-                errorOccured = true
+                loadingState = .error
                 errorMessage = error.localizedDescription
                 print(errorMessage)
             }

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct DessertHomeView: View {
     @StateObject private var dessertHomeViewModel = DessertHomeViewModel()
-    @StateObject private var viewModel = DessertListViewModel(dessertProvider: DessertProvider())
+    @StateObject private var listViewModel = DessertListViewModel()
+    @StateObject private var favoriteService = FavoritesService()
     
     var body: some View {
         NavigationView {
@@ -22,19 +23,18 @@ struct DessertHomeView: View {
                 .padding(.horizontal, 40)
                 .pickerStyle(.segmented)
                 
-                if dessertHomeViewModel.selectedView == .allDesserts {
-                    DessertListView()
-                } else {
-                    Spacer()
-                    DessertFavoritesListView()
+                switch dessertHomeViewModel.selectedView {
+                case .allDesserts: DessertListView(viewModel: listViewModel)
+                case .favorites: DessertFavoritesListView()
                 }
+                
                 Spacer()
             }
             .navigationTitle("Make a Dessert!")
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .scrollContentBackground(.hidden)
-        .environmentObject(viewModel)
+        .environmentObject(favoriteService)
     }
 }
 

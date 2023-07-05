@@ -9,13 +9,17 @@ import Foundation
 
 class DessertListViewModel: ObservableObject {
     @Published var dessertListMeals: [DessertListMealInfo] = []
-    @Published var errorOccured: Bool = false
-    @Published var favoriteIds = (UserDefaults.standard.array(forKey: "favorites") as? [String] ?? [])
-    @Published var favoriteMeals: [DessertListMealInfo] = []
+    @Published var loadingState: LoadingState = .loading
     var errorMessage = ""
     private let dessertProvider: DessertProviding
     
-    init(dessertProvider: DessertProviding) {
+    enum LoadingState {
+        case error
+        case loading
+        case loaded
+    }
+    
+    init(dessertProvider: DessertProviding = DessertProvider()) {
         self.dessertProvider = dessertProvider
     }
     
@@ -24,26 +28,13 @@ class DessertListViewModel: ObservableObject {
         let task = Task {
             do {
                 dessertListMeals = try await dessertProvider.getDesserts()
-                errorOccured = false
+                loadingState = .loaded
             } catch let error {
-                errorOccured = true
+                loadingState = .error
                 errorMessage = error.localizedDescription
                 print(errorMessage)
             }
         }
         return task
-    }
-    
-    func addOrRemove(_ mealId: String) {
-        if favoriteIds.contains(mealId) {
-            favoriteIds.removeAll { $0 == mealId }
-        } else {
-            favoriteIds.append(mealId)
-        }
-        UserDefaults.standard.set(self.favoriteIds, forKey: "favorites")
-    }
-    
-    func fetchFavorites() {
-        favoriteMeals = dessertListMeals.filter { meal in favoriteIds.contains { meal.id == $0 }}
     }
 }

@@ -17,7 +17,6 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Make a Dessert.xcodeproj",
         "identifier" : "535522A52A00699C00219334",

@@ -8,28 +8,30 @@
 import SwiftUI
 
 struct DessertListView: View {
-    @EnvironmentObject private var viewModel: DessertListViewModel
+    @ObservedObject var viewModel: DessertListViewModel
     
     var body: some View {
         Group {
-            if viewModel.errorOccured {
-                VStack {
-                    Text("Error fetching desserts. Please try again.")
-                    Button(action: {
-                        viewModel.getDessertMeals()
-                    }) {
-                        Text("Fetch Desserts")
-                    }
-                    .buttonStyle(.borderedProminent)
-                }
-            } else if !viewModel.dessertListMeals.isEmpty {
-                DessertListingView(meals: viewModel.dessertListMeals)
-            } else {
-                ProgressView()
+            switch viewModel.loadingState {
+            case .error: errorButton
+            case .loaded: DessertListingView(meals: viewModel.dessertListMeals)
+            case .loading: ProgressView()
             }
         }
         .onAppear {
             viewModel.getDessertMeals()
+        }
+    }
+    
+    private var errorButton: some View {
+        VStack {
+            Text("Error fetching desserts. Please try again.")
+            Button(action: {
+                viewModel.getDessertMeals()
+            }) {
+                Text("Fetch Desserts")
+            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }
@@ -37,8 +39,8 @@ struct DessertListView: View {
 struct DessertListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DessertListView()
+            DessertListView(viewModel: DessertListViewModel())
         }
-        .environmentObject(DessertListViewModel(dessertProvider: DessertProvider()))
+        .environmentObject(FavoritesService())
     }
 }

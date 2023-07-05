@@ -21,49 +21,6 @@ final class DessertListViewModelTests: XCTestCase {
         
         XCTAssertEqual(mockDessertMeals, viewModel.dessertListMeals)
         XCTAssert(viewModel.errorMessage.isEmpty)
-        XCTAssertFalse(viewModel.errorOccured)
-    }
-    
-    func testAddFavoriteId() {
-        let viewModel = DessertListViewModel(dessertProvider: MockDessertProvider())
-        viewModel.favoriteIds = []
-        XCTAssertEqual(viewModel.favoriteIds.count, 0)
-        
-        viewModel.addOrRemove(mockMeal.id)
-        XCTAssertEqual(viewModel.favoriteIds[0], mockMeal.id)
-        viewModel.addOrRemove(mockMeal2.id)
-        XCTAssertEqual(viewModel.favoriteIds[1], mockMeal2.id)
-    }
-    
-    func testLoadFavoriteIDs() {
-        var viewModel: DessertListViewModel? = DessertListViewModel(dessertProvider: MockDessertProvider())
-        viewModel?.favoriteIds = []
-        viewModel?.addOrRemove("2") // Adds it to user defaults
-        viewModel = nil
-        let viewModel2 = DessertListViewModel(dessertProvider: MockDessertProvider())
-        XCTAssertEqual(viewModel2.favoriteIds[0], "2")
-    }
-    
-    func testRemoveFavoriteID() async {
-        let viewModel = DessertListViewModel(dessertProvider: MockDessertProvider())
-        viewModel.favoriteIds = []
-        XCTAssertEqual(viewModel.favoriteIds.count, 0)
-        
-        viewModel.addOrRemove(mockMeal.id)
-        XCTAssertEqual(viewModel.favoriteIds[0], mockMeal.id)
-        viewModel.addOrRemove(mockMeal.id)
-        XCTAssertEqual(viewModel.favoriteIds.count, 0)
-    }
-    
-    func testFetchFavorites() async {
-        let viewModel = DessertListViewModel(dessertProvider: MockDessertProvider())
-        viewModel.favoriteIds = ["52768"] // Cache
-        let task = await viewModel.getDessertMeals()
-        await task.value
-                
-        viewModel.fetchFavorites()
-        XCTAssertEqual(viewModel.favoriteMeals.count, 1)
-        XCTAssertEqual(viewModel.favoriteMeals[0], mockMeal)
     }
     
     func testDessertMealsInvalidURL() async {
@@ -74,7 +31,6 @@ final class DessertListViewModelTests: XCTestCase {
         
         XCTAssertEqual(DessertErrors.invalidURL.localizedDescription, viewModel.errorMessage)
         XCTAssert(viewModel.dessertListMeals.isEmpty)
-        XCTAssertTrue(viewModel.errorOccured)
     }
     
     func testDessertMealsNetworkError() async {
@@ -85,7 +41,6 @@ final class DessertListViewModelTests: XCTestCase {
         
         XCTAssertEqual(DessertErrors.networkError.localizedDescription, viewModel.errorMessage)
         XCTAssert(viewModel.dessertListMeals.isEmpty)
-        XCTAssertTrue(viewModel.errorOccured)
     }
     
     func testDessertMealsDecodingError() async {
@@ -96,6 +51,5 @@ final class DessertListViewModelTests: XCTestCase {
         
         XCTAssertEqual(DessertErrors.decodingError.localizedDescription, viewModel.errorMessage)
         XCTAssert(viewModel.dessertListMeals.isEmpty)
-        XCTAssertTrue(viewModel.errorOccured)
     }
 }

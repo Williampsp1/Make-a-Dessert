@@ -26,6 +26,5 @@ struct DessertListingView_Previews: PreviewProvider {
         NavigationView {
             DessertListingView(meals: [DessertListMealInfo(strMeal: "Ice Cream", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", id: "52891"), DessertListMealInfo(strMeal: "Ice Cream", strMealThumb: "https://www.themealdb.com/images/media/meals/adxcbq1619787919.jpg", id: "52891")])
         }
-        .environmentObject(DessertListViewModel(dessertProvider: DessertProvider()))
     }
 }

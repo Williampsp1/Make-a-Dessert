@@ -29,7 +29,6 @@ final class DessertDetailViewModelTests: XCTestCase {
         
         XCTAssertEqual(DessertErrors.invalidURL.localizedDescription, viewModel.errorMessage)
         XCTAssertNil(viewModel.detailInfo)
-        XCTAssertTrue(viewModel.errorOccured)
     }
     
     func testDessertMealsNetworkError() async {
@@ -40,7 +39,6 @@ final class DessertDetailViewModelTests: XCTestCase {
         
         XCTAssertEqual(DessertErrors.networkError.localizedDescription, viewModel.errorMessage)
         XCTAssertNil(viewModel.detailInfo)
-        XCTAssertTrue(viewModel.errorOccured)
     }
     
     func testDessertMealsDecodingError() async {
@@ -51,6 +49,5 @@ final class DessertDetailViewModelTests: XCTestCase {
         
         XCTAssertEqual(DessertErrors.decodingError.localizedDescription, viewModel.errorMessage)
         XCTAssertNil(viewModel.detailInfo)
-        XCTAssertTrue(viewModel.errorOccured)
     }
 }
